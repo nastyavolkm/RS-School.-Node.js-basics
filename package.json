@@ -4,8 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node src/app.js"
   },
   "author": "Anastasiya Mianko",
-  "license": "ISC"
+  "license": "ISC",
+  "type": "module"
 }
