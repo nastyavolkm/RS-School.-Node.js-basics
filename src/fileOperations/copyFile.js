@@ -11,7 +11,7 @@ const copyFile = async (args) => {
     } else {
         const pathToFile = args[0];
         const copiedFilePath = args[1];
-        const isDelete = args[2]?.isDelete;
+        const isDelete = args[2]?.isDelete || args.find((arg) => Object.keys(arg) === 'defaultArgs');
         let sourceFilePath = '';
         let targetFilePath = '';
 

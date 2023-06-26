@@ -5,6 +5,7 @@ import renameFile from "../fileOperations/rename.js";
 import copyFile from "../fileOperations/copyFile.js";
 import { exitHandler } from "../utils/utils.js";
 import deleteFile from "../fileOperations/deleteFile.js";
+import { getOSData } from "../os/os-functions.js";
 
 const commands = [
     { 
@@ -38,6 +39,9 @@ const commands = [
     },
     {
         ['rm']: deleteFile,
+    },
+    {
+        ['os']: getOSData,
     },
 ];
 

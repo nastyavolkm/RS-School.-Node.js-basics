@@ -1,5 +1,6 @@
 import readline from 'readline';
 import { commands } from '../commands/commands.js';
+import invalidCommandHandler from './invalidCommandHandler.js';
 
 let user = '';
 
@@ -36,10 +37,10 @@ const commandListener = async () => {
         const commandFromInput = first;
         const command = commands.find((item) => Object.keys(item)[0] === commandFromInput);
         if (command) {
-            const args = command.defaultArgs ? [...rest, ...command.defaultArgs] : rest;
+            const args = command.defaultArgs ? [...rest, {defaultArgs: command.defaultArgs}] : rest;
             await command[commandFromInput](args); 
         } else {
-            console.log('Invalid command');
+            invalidCommandHandler();
         }
     };
 
