@@ -19,11 +19,12 @@ const goToDirectory = (directoryPath) => {
     if (!directoryPath) {
         process.chdir(currentPath);    
     } else {
+        const path = directoryPath[0];
         try {
-            if (isAbsolute(directoryPath)) {
-            process.chdir(directoryPath);
+            if (isAbsolute(path)) {
+            process.chdir(path);
         } else {
-            const newPath = join(currentPath, directoryPath);
+            const newPath = join(currentPath, path);
             process.chdir(newPath);
         }
     } catch {

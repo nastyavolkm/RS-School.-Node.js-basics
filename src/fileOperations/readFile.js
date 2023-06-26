@@ -1,32 +1,28 @@
-import { join, isAbsolute } from 'path'; 
-import fs from 'fs';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+import { isAbsolute, resolve } from 'path'; 
+import { createReadStream } from 'fs';
 import errorHandler from '../utils/errorHandler.js';
 
-const readFile = async (path) => {
-    const __filename = fileURLToPath(import.meta.url);
-    const __dirname = dirname(__filename);
-
-    if (!path) {
+const readFile = async (pathArr) => {
+    if (!pathArr) {
         errorHandler();
     } else {
-        const currentDirectoryPath = process.cwd();
-        let fileToReadPath = '';
-        if (isAbsolute(path)) {
-            fileToReadPath = path;
-        } else {
-            fileToReadPath = join(currentDirectoryPath, path);
-        }
-        
-        fs.readFile(fileToReadPath, 'utf8', (error, data) => {
-            if (error) {
-                errorHandler();
+        try {
+            const path = pathArr[0];
+            const currentDirectoryPath = process.cwd();
+            let fileToReadPath = '';
+            if (isAbsolute(path)) {
+                fileToReadPath = path;
             } else {
-                console.log(data);
+                fileToReadPath = resolve(currentDirectoryPath, path);
             }
-        }); 
+            const readFileStream = createReadStream(fileToReadPath, 'utf-8');
+            readFileStream.on('data', (data) => console.log(data));
     }
+        catch {
+            errorHandler();
+        }
+    }
+        
 };
 
 export default readFile;

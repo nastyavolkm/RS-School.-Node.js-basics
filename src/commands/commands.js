@@ -1,22 +1,43 @@
 import { goFolderUp, goToDirectory, readDirectory } from "../navigation/navigation.js";
 import readFile from "../fileOperations/readFile.js";
 import addEmptyFile from "../fileOperations/addEmptyFile.js";
+import renameFile from "../fileOperations/rename.js";
+import copyFile from "../fileOperations/copyFile.js";
+import { exitHandler } from "../utils/utils.js";
+import deleteFile from "../fileOperations/deleteFile.js";
 
 const commands = [
     { 
-        up: goFolderUp,
+        ['up']: goFolderUp,
      },
     {
-        cd: goToDirectory,
+        ['cd']: goToDirectory,
     },
     {
-        ls: readDirectory,
+        ['ls']: readDirectory,
     },
     {
-        cat: readFile,
+        ['cat']: readFile,
     },
     {
-        add: addEmptyFile,
+        ['add']: addEmptyFile,
+    },
+    {
+        ['rn']: renameFile,
+    },
+    {
+        ['cp']: copyFile,
+    },
+    {
+        ['mv']: copyFile,
+        defaultArgs: [
+            { 
+            isDelete: true,
+        },
+    ],
+    },
+    {
+        ['rm']: deleteFile,
     },
 ];
 

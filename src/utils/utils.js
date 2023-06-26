@@ -1,6 +1,5 @@
 import readline from 'readline';
 import { commands } from '../commands/commands.js';
-import { getCurrentDirectory }  from './dirname.js'; 
 
 let user = '';
 
@@ -14,7 +13,7 @@ const initApp = () => {
 }
 
 const printWorkingDirectory = () => {
-    const fileName = getCurrentDirectory();
+    const fileName = process.cwd();
     const wording = `You are currently in ${fileName}`;
     console.log(wording);
 };
@@ -35,9 +34,9 @@ const commandListener = async () => {
       const runCommand = async (line) => {
         const [first, ...rest] = line.split(' ');
         const commandFromInput = first;
-        const args = rest.join(' ');
         const command = commands.find((item) => Object.keys(item)[0] === commandFromInput);
         if (command) {
+            const args = command.defaultArgs ? [...rest, ...command.defaultArgs] : rest;
             await command[commandFromInput](args); 
         } else {
             console.log('Invalid command');
@@ -55,7 +54,8 @@ const commandListener = async () => {
     });
 };
 
-export {
+export {    
+    exitHandler,
     commandListener,
     initApp,
 };
