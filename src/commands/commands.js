@@ -7,6 +7,8 @@ import { exitHandler } from "../utils/utils.js";
 import deleteFile from "../fileOperations/deleteFile.js";
 import { getOSData } from "../os/os-functions.js";
 import calculateHash from "../hash/calculateHash.js";
+import compressFile from "../compress/compressFile.js";
+import decompressFile from "../compress/decompressFile.js";
 
 const commands = [
     { 
@@ -46,6 +48,12 @@ const commands = [
     },
     {
         ['hash'] : calculateHash,
+    },
+    {
+        ['compress']: compressFile,
+    },
+    {
+        ['decompress']: decompressFile,
     },
 ];
 

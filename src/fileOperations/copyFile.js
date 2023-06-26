@@ -45,12 +45,10 @@ const copyFile = async (args) => {
                 await unlink(sourceFilePath);
             }
         }
-        catch (error) {
-            console.log(error);
+        catch {
             errorHandler();
         }    
     }
-
 };
 
 export default copyFile;
