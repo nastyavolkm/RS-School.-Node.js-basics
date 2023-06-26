@@ -6,6 +6,7 @@ import copyFile from "../fileOperations/copyFile.js";
 import { exitHandler } from "../utils/utils.js";
 import deleteFile from "../fileOperations/deleteFile.js";
 import { getOSData } from "../os/os-functions.js";
+import calculateHash from "../hash/calculateHash.js";
 
 const commands = [
     { 
@@ -42,6 +43,9 @@ const commands = [
     },
     {
         ['os']: getOSData,
+    },
+    {
+        ['hash'] : calculateHash,
     },
 ];
 

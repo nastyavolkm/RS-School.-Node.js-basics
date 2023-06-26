@@ -1,5 +1,5 @@
 import os from 'os';
-import invalidCommandHandler from '../utils/invalidCommandHandler';
+import invalidCommandHandler from '../utils/invalidCommandHandler.js';
 
 const getOSData = (arg) => {
     const data = arg?.[0].slice(2);
