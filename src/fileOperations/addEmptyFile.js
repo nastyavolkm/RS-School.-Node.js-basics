@@ -12,7 +12,7 @@ const addEmptyFile = async (file) => {
         try {
             await writeFile(fileNamePath, '', {flag: 'wx'});
         }
-        catch (error) {
+        catch {
             errorHandler();
         }
     }

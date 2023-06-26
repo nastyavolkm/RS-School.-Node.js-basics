@@ -39,6 +39,4 @@ const getOSData = (arg) => {
     }
 };
 
-export {
-    getOSData,
-};
+export default getOSData;
