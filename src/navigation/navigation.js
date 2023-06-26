@@ -1,4 +1,4 @@
-import { isAbsolute, join } from 'path';
+import { isAbsolute, resolve } from 'path';
 import errorHandler from '../utils/errorHandler.js';
 import { readdir } from 'fs';
 
@@ -24,10 +24,10 @@ const goToDirectory = (directoryPath) => {
             if (isAbsolute(path)) {
             process.chdir(path);
         } else {
-            const newPath = join(currentPath, path);
+            const newPath = resolve(currentPath, path);
             process.chdir(newPath);
         }
-    } catch {
+    } catch  {
         errorHandler();
     }
 }
