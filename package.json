@@ -1,0 +1,12 @@
+{
+  "name": "rs-school.-node.js-basics",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node src/app.js"
+  },
+  "author": "Anastasiya Mianko",
+  "license": "ISC",
+  "type": "module"
+}
